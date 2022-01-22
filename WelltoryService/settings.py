@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'WelltoryService.apps.service_api'
+    'WelltoryService.apps.service_api',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -84,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'HOST': 'postgresql',
+        'HOST': 'localhost',
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'PORT': 5432,
     }
@@ -109,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'service_api.WelltoryUser'
+# AUTH_USER_MODEL = 'service_api.WelltoryUser'
 
 
 # Internationalization
