@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('WelltoryService.apps.service_api.urls')),
+    path('external-fake-api/', include('WelltoryService.apps.service_api.urls')),
 ]
