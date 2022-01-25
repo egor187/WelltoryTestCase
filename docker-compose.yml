@@ -37,6 +37,8 @@ services:
       - celery
     env_file:
       - .env
+    volumes:
+      - .:/WelltoryTestCase
 
   celery:
     image: celery:latest
