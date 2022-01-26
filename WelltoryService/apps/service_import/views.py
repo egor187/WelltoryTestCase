@@ -4,8 +4,7 @@ from rest_framework.response import Response
 from .celery_tasks import import_task
 from uuid import uuid4
 from celery.exceptions import SoftTimeLimitExceeded
-
-logger = get_task_logger(__name__)
+from loguru import logger
 
 
 class ImportHandler(APIView):
@@ -13,9 +12,9 @@ class ImportHandler(APIView):
         redis_key = str(uuid4())
         service_api_url = reverse("service_api:list")
         try:
-            task_result = import_task.delay(service_api_url, redis_key)
+            task_result = import_task.delay(service_api_url, redis_key).get()
         except SoftTimeLimitExceeded as e:
             logger.info(f"Task exc time is exceeded: {e}")
             return Response(e)
         else:
-            return Response(task_result.get())
+            return Response(task_result)
