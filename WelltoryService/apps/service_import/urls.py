@@ -5,5 +5,5 @@ from .views import ImportHandler
 app_name = 'service_import'
 
 urlpatterns = [
-    path('', ImportHandler.as_view()),
+    path('', ImportHandler.as_view(), name="import"),
 ]
