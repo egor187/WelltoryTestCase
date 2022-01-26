@@ -34,7 +34,6 @@ services:
     depends_on:
       - postgresql
       - redis
-      - celery
     env_file:
       - .env
     volumes:
@@ -47,6 +46,7 @@ services:
     restart: always
     depends_on:
       - redis
+      - welltory_api
     command: celery -A WelltoryService worker -l info
     networks:
       - backend
