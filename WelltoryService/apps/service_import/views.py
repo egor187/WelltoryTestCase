@@ -10,10 +10,11 @@ logger = get_task_logger(__name__)
 
 
 class ImportHandler(APIView):
-    def post(self, request):
+    def get(self, request):
         redis_key = str(uuid4())
-        user_id = request.data.get("user_id")
-        service_api_url = reverse("service_api:detail", args=[user_id])
+        # user_id = request.data.get("user_id")
+        # service_api_url = reverse("service_api:detail", args=[user_id])
+        service_api_url = reverse("service_api:list")
         try:
             task_result = import_task.delay(service_api_url, redis_key)
         except SoftTimeLimitExceeded as e:
