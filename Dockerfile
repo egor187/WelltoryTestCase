@@ -3,20 +3,18 @@ FROM python:3.10.0 as dependecies
 COPY requirements.txt /requirements.txt
 COPY entry_point.sh /entry_point.sh
 
-WORKDIR /WelltoryTestCase
-
 RUN python -m pip install --upgrade pip
 RUN pip3 install --no-cache-dir -r /requirements.txt
 
 
 FROM dependecies
 
-COPY . /WelltoryTestCase
+COPY . /WelltoryService
 
 ENV PYTHONUNBUFFERED 1
-ENV PYTHONPATH /WelltoryTestCase
+ENV PYTHONPATH /WelltoryService
 
-WORKDIR /WelltoryTestCase
+WORKDIR /WelltoryService
 
 ENTRYPOINT ["./entry_point.sh"]
 
