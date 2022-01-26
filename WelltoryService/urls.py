@@ -21,7 +21,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('external-fake-api/', include('WelltoryService.apps.service_api.urls')),
-    path('run-import-task/', include('WelltoryService.apps.service_import.urls')),
+    path('importer/', include('WelltoryService.apps.service_import.urls')),
+    path('run-import-task/', include('WelltoryService.apps.service_data.urls')),
 ]
 
 if settings.DEBUG:
