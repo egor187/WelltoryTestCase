@@ -15,7 +15,6 @@ def import_task(service_api_url,  redis_key):
         url = f"http://host.docker.internal:8000{service_api_url}"
         user_data = requests.get(url).text
         redis_cli_prod.set(redis_key, user_data)
-        # redis_cli_prod.set(redis_key, user_data)
         return redis_key
     except SoftTimeLimitExceeded:
         raise
