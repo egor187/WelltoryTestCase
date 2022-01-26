@@ -26,7 +26,7 @@ def fake_users(apps, scheme_editor):
             username=username,
             first_name=first_name,
             last_name=last_name,
-            password='123456',
+            password="123456",
             email=email,
         )
 
@@ -56,11 +56,11 @@ def fake_weights(apps, scheme_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('service_api', '0001_initial'),
+        ("service_api", "0001_initial"),
     ]
 
     operations = [
         migrations.RunPython(fake_users),
         migrations.RunPython(fake_units),
-        migrations.RunPython(fake_weights)
+        migrations.RunPython(fake_weights),
     ]

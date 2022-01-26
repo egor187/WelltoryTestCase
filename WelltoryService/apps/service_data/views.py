@@ -18,7 +18,9 @@ class ImportApiView(APIView):
         service_api_url = reverse("service_api:list")
         url = f"http://host.docker.internal:8000{service_import_url}"
         redis_key = requests.get(url).text
-        import_task.apply_async(args=[service_api_url, redis_key], link=data_process_task.s())
+        import_task.apply_async(
+            args=[service_api_url, redis_key], link=data_process_task.s()
+        )
         return Response(status=201)
 
 

@@ -19,13 +19,11 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('external-fake-api/', include('WelltoryService.apps.service_api.urls')),
-    path('importer/', include('WelltoryService.apps.service_import.urls')),
-    path('run-import-task/', include('WelltoryService.apps.service_data.urls')),
+    path("admin/", admin.site.urls),
+    path("external-fake-api/", include("WelltoryService.apps.service_api.urls")),
+    path("importer/", include("WelltoryService.apps.service_import.urls")),
+    path("run-import-task/", include("WelltoryService.apps.service_data.urls")),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(
-        settings.STATIC_URL, document_root=settings.STATIC_ROOT
-    )
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

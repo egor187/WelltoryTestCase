@@ -10,7 +10,7 @@ logger = get_task_logger(__name__)
 
 
 @app.task
-def import_task(service_api_url,  redis_key):
+def import_task(service_api_url, redis_key):
     try:
         url = f"http://host.docker.internal:8000{service_api_url}"
         user_data = requests.get(url).text

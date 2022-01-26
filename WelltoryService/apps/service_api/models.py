@@ -12,7 +12,9 @@ class WeightUnit(models.Model):
 class Weight(models.Model):
     weight = models.FloatField()
     date = models.DateField(auto_now=True)
-    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, related_name="weight")
+    user = models.OneToOneField(
+        get_user_model(), on_delete=models.CASCADE, related_name="weight"
+    )
     unit = models.ForeignKey(WeightUnit, on_delete=models.PROTECT, related_name="+")
 
     def __str__(self):

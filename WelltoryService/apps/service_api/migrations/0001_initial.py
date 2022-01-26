@@ -15,20 +15,50 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='WeightUnit',
+            name="WeightUnit",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('unit', models.TextField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("unit", models.TextField()),
             ],
         ),
         migrations.CreateModel(
-            name='Weight',
+            name="Weight",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('weight', models.FloatField()),
-                ('date', models.DateField(auto_now=True)),
-                ('unit', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='service_api.weightunit')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='weight', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("weight", models.FloatField()),
+                ("date", models.DateField(auto_now=True)),
+                (
+                    "unit",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="+",
+                        to="service_api.weightunit",
+                    ),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="weight",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
